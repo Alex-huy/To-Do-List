@@ -1,0 +1,276 @@
+body {
+    box-sizing: border-box;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    position: relative;
+    margin: 0;
+    /* s */
+}
+
+.backgound {
+    min-height: 100%;
+    min-width: 1024px;
+    /* Set up proportionate scaling */
+    width: 100%;
+    height: auto;
+    /* Set up positioning */
+    position: fixed;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    object-position: 100% 100%;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+                     /* CLOCK */
+#clock {
+    font-size: 90px;
+    font-weight: bold;
+    margin-top: 50px;
+    margin-bottom: 0;
+}
+                    
+.white-clock {
+    font-size: 90px;
+    font-weight: bold;
+    color: white;
+}
+
+                    /* FORM INPUT*/
+
+.input-form {
+    /* z-index: 2; */
+    width: 100%;
+    display: grid;
+    place-items: center;
+    height: auto;
+    margin: 10px;
+}
+
+input {
+    width: 30%;
+    height: 30px;
+    outline: none;
+    padding: 5px 10px;
+    font-size: 25px;
+    font-weight: 300;
+    background-color: rgba(255, 255, 255, 0.075);
+    border: none;
+    text-align: center;
+    color: white;
+
+}
+
+
+
+.hidden {
+    display: none;
+}
+
+.white-text {
+    color: white;
+}
+
+.color-change {
+    background-color:rgba(0, 255, 255, 0.247);
+    color: rgba(0, 0, 0, 0.5);
+}
+
+                    /*TO DO FORM*/
+#todo-form {
+    width: 100%;
+    height: auto;
+    display: grid;
+    place-items: center;
+}
+
+.todo-list {
+    list-style: none;
+    font-size: 25px;
+    padding: 0;
+    color: wheat;
+}
+
+.color-list {
+    color: black;
+}
+
+                    /*LIST APPEAR*/
+.appear {
+    animation: showUp 1s ease-in;
+}
+
+@keyframes showUp {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+
+                    /*DELETE BUTTON*/
+#deleteBtn {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 2px solid red;
+    margin-left: 20px;
+    font-size: 15px;
+    text-align: center;
+    box-shadow: 3px 2px 2px #e21a0c;
+    margin: 4px 10px 4px 10px;
+    position: relative;
+}
+
+                    /*DELETE BUTTON EFFECT*/
+#deleteBtn::before {
+    content: "";
+    background-color:#e21a0c;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    transform: scale(0.001, 0.001);
+    /* z-index: 1; */
+    /* transform: translateX(100%); */
+}
+
+#deleteBtn:active{
+    box-shadow: 0 0 0 #e21a0c;
+    margin: 6px 10px 2px 10px;
+}
+
+#deleteBtn:active::before {
+    /* background-color: #89e20c; */
+    animation: effect_dylan 0.2s ease-out;
+}
+
+@keyframes effect_dylan {
+    50% {
+    transform: scale(2.5, 2.5);
+    opacity: 0;
+    }
+    99% {
+    transform: scale(0.001, 0.001);
+    opacity: 0;
+    }
+    100% {
+    transform: scale(0.001, 0.001);
+    opacity: 1;
+    }
+}
+                    /*CROSS LINE WHEN DELETING*/
+#list {
+    display: inline-block;
+}
+
+.liList {
+    position: relative;
+}
+
+.liList::after {
+    /* text-decoration: line-through red solid;*/
+    content: "";
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: red;
+    animation-name: strike;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards; 
+}
+
+@keyframes strike{
+    0%   { width : 0; }
+    100% { width: 90%; }
+}
+
+                    /*WEATHER*/
+
+#weather {
+    position: relative;
+    display: inline-block;
+    width: 250px;
+    height: 40px;
+}
+#weather .after {
+    opacity: 0;
+    outline: none;
+    color: #323237;
+    text-transform: uppercase;
+    line-height: 20px;
+    font-weight: bolds;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    display: inline-block;
+    letter-spacing: 1px;
+    transform: translateY(-50%) rotateX(90deg);
+    transition: 0.5s;
+    background-color: #adadaf;
+}
+
+#weather .before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    text-align: center;
+    letter-spacing: 1px;
+    line-height: 20px;
+    font-weight: bold;
+    /* background-color: #e21a0c1e; */
+    display: inline-block;
+    opacity: 1;
+    color: #adadaf;
+    display: grid;
+    place-items: center;
+    background-color: #323237;
+    transition: 0.5s;
+}
+
+#weather:hover >.before {
+    opacity: 0;
+    transform: translateY(-50%) rotateX(90deg);
+}
+
+#weather:hover > .after {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+}
+
+
+                    /*QUOTE*/
+
+#quote {
+    font-size: 20px;
+    color: wheat;
+    font-weight: 700;
+    height: fit-content;
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+
+#quote > span:last-child {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.black-quotes {
+    color: black;
+}
